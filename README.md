@@ -5,3 +5,35 @@ Spring Cloud 示例
 [Eureka](https://github.com/Netflix/eureka/wiki/Eureka-at-a-glance) 是 Netflix 开源的一个 RESTful 服务，主要用于服务的注册发现。Eureka 由两个组件组成：Eureka 服务器和 Eureka 客户端。
 
 Eureka 服务端对应本示例的 discovery-service 模块。
+
+# 附加组件
+
+## 使用 Docker 部署 Git 服务
+
+获取镜像。
+```bash
+docker pull jefferlau/gitbucket-server:4.13
+# or
+docker pull jefferlau/gitbucket-server:lastest
+```
+使用此镜像部署服务。
+```bash
+mkdir 4.13
+docker run -p 18080:8080 --name jefferlau-gitbucket -v $PWD/4.13:/root/.gitbucket -d jefferlau/gitbucket-server:4.13
+```
+
+- 端口任意定制
+- $PWD 指代当前目录，即将宿主机当前目录下的文件夹4.13挂载到 Docker 容器的 /root/.gitbucket 目录
+- Go to http://[hostname]:18080/ and log in with ID: root / Pass: root.
+
+Docker-Compose
+
+编辑你的 docker-compose.yml 文件，然后使用 ``docker-compose`` 运行这个容器：
+
+```bash
+$ docker-compose up -d
+```
+
+资源
+- 轻量级 Git 服务器：[gitbucket](https://github.com/gitbucket/gitbucket/releases)
+- 本例 gitbucket-server Docker 镜像源码传送门：[Jefferlau/gitbucket-server-docker](https://github.com/Jefferlau/gitbucket-server-docker)
