@@ -45,7 +45,7 @@
         <module>discovery-service</module>
         <module>configuration-service</module>
         <module>users-service</module>
-        <!--<module>api-gateway</module>-->
+        <module>api-gateway-service</module>
         <!--<module>hystrix-dashboard</module>-->
         <!--<module>consul-service</module>-->
         <!--<module>recommendation-service</module>-->

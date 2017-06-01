@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableDiscoveryClient
 @EnableConfigServer
 public class ConfigurationStarter {
-	public static void main(String[] args) {
-		SpringApplication.run(ConfigurationStarter.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ConfigurationStarter.class, args);
+    }
 }

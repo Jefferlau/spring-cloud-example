@@ -21,6 +21,28 @@ curl -u cloudapp:FD3A86C4-3822-4551-9903-3E0B55B1EE65 http://localhost:8888/user
 
 [参考文件](https://blog.coding.net/blog/spring-cloud-config?utm_source=tuicool&utm_medium=referral)
 
+## users-service
+
+模拟服务提供者。
+
+浏览器打开[http://localhost:9000/add?a=1&b=3]()
+或者运行
+```bash
+curl http://localhost:9000/add\?a\=1\&b\=3
+```
+验证接口。
+
+## api-gateway
+
+接口网关。
+
+浏览器打开[http://localhost:10000/user/add?a=1&b=3]()
+或者运行
+```bash
+curl http://localhost:10000/user/add\?a\=1\&b\=3
+```
+验证接口通过网关调用。
+
 # 附加组件
 
 ## 使用 Docker 部署 Git 服务

@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: gateway
+  profiles:
+    active: development
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: configserver
+      # label 对应 Git branch
+      label: gateway
+      # name 对应文件名
+      name: gateway
+      username: cloudapp
+      password: FD3A86C4-3822-4551-9903-3E0B55B1EE65
+
+eureka:
+  instance:
+    # hostname: gateway
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      # defaultZone: http://discovery:8761/eureka/
+      defaultZone: http://${discovery.host:localhost}:8761/eureka/
+
+encrypt:
+  failOnError: false
