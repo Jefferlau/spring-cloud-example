@@ -18,6 +18,7 @@ curl -u cloudapp:FD3A86C4-3822-4551-9903-3E0B55B1EE65 http://localhost:8888/user
 ```
 
 [配置示例仓库](https://github.com/Jefferlau/spring-cloud-example-config)
+
 [参考文件](https://blog.coding.net/blog/spring-cloud-config?utm_source=tuicool&utm_medium=referral)
 
 # 附加组件
