@@ -1,0 +1,38 @@
+server:
+  port: 8888
+
+eureka:
+  instance:
+    hostname: configserver
+    # 续约更新时间间隔（默认30秒）生产环境不建议修改
+    lease-renewal-interval-in-seconds: 30
+    # 续约到期时间（默认90秒）生产环境不建议修改
+    lease-expiration-duration-in-seconds: 10
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      # defaultZone: http://discovery:8761/eureka/
+      # 表示没有读到 discovery.host 就用 localhost 这个值
+      # java -jar xx.jar --discovery.host=discovery
+      defaultZone: http://${discovery.host:localhost}:8761/eureka/
+    # 开启健康检查（需要spring-boot-starter-actuator依赖）
+    healthcheck: enable
+
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          # uri: https://github.com/Jefferlau/spring-cloud-example-config.git
+          uri: http://localhost:18080/git/liutiyang/spring-cloud-example-config.git
+          username: cloudapp
+          password: cloudapp
+          search-paths: /
+
+security:
+  user:
+    name: cloudapp
+    password: FD3A86C4-3822-4551-9903-3E0B55B1EE65

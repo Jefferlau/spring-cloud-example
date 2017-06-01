@@ -6,6 +6,20 @@ Spring Cloud 示例
 
 Eureka 服务端对应本示例的 discovery-service 模块。
 
+## 配置中心
+
+基于 Git 仓库对配置进行版本管理，使用默认实现的基本的 HttpBasic 的认证。
+
+使用下列命令看不同的 profiles 配置。
+```bash
+curl -u cloudapp:FD3A86C4-3822-4551-9903-3E0B55B1EE65 http://localhost:8888/user/user-development.yml
+curl -u cloudapp:FD3A86C4-3822-4551-9903-3E0B55B1EE65 http://localhost:8888/user/user-production.yml
+curl -u cloudapp:FD3A86C4-3822-4551-9903-3E0B55B1EE65 http://localhost:8888/user/user-test.yml
+```
+
+[配置示例仓库](https://github.com/Jefferlau/spring-cloud-example-config)
+[参考文件](https://blog.coding.net/blog/spring-cloud-config?utm_source=tuicool&utm_medium=referral)
+
 # 附加组件
 
 ## 使用 Docker 部署 Git 服务

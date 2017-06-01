@@ -6,6 +6,11 @@ server:
   port: 8761
 
 eureka:
+  server:
+    # 设为false，关闭自我保护 生产环境不建议修改
+    enable-self-preservation: false
+    # 清理已关停节点间隔（单位毫秒，默认是 60*1000）生产环境不建议修改
+    eviction-interval-timer-in-ms: 4000
   instance:
     hostname: discovery
   client:

@@ -43,7 +43,7 @@
 
     <modules>
         <module>discovery-service</module>
-        <!--<module>config-service</module>-->
+        <module>configuration-service</module>
         <!--<module>api-gateway</module>-->
         <!--<module>hystrix-dashboard</module>-->
         <!--<module>consul-service</module>-->
