@@ -46,11 +46,11 @@
         <module>configuration-service</module>
         <module>users-service</module>
         <module>api-gateway-service</module>
+        <module>api-client-demo</module>
         <!--<module>hystrix-dashboard</module>-->
         <!--<module>consul-service</module>-->
         <!--<module>recommendation-service</module>-->
         <!--<module>movie-service</module>-->
-        <!--<module>movies-ui</module>-->
     </modules>
 
     <properties>
