@@ -6,6 +6,11 @@ Spring Cloud 示例
 
 Eureka 服务端对应本示例的 discovery-service 模块。
 
+host 文件添加
+```
+127.0.0.1 discovery configserver gateway user
+```
+
 ## 配置中心
 
 基于 Git 仓库对配置进行版本管理，使用默认实现的基本的 HttpBasic 的认证。
@@ -42,6 +47,12 @@ curl http://localhost:9000/add\?a\=1\&b\=3
 curl http://localhost:10000/user/add\?a\=1\&b\=3
 ```
 验证接口通过网关调用。
+
+## Hystrix Dashboard
+
+浏览器打开[http://localhost:7979/hystrix.stream]()
+输入``localhost:8080/hystrix.stream``，点击"Monitor Stream"。
+
 
 # 附加组件
 

@@ -17,7 +17,7 @@ spring:
 
 eureka:
   instance:
-    # hostname: gateway
+    hostname: gateway
     preferIpAddress: true
   client:
     registerWithEureka: true

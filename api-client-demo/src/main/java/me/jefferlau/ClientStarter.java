@@ -24,7 +24,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @EnableAutoConfiguration
 @EnableDiscoveryClient
-@EnableZuulProxy
+// @EnableZuulProxy // 动态路由
 @EnableHystrix
 @EnableCircuitBreaker
 public class ClientStarter extends SpringBootServletInitializer {
