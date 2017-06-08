@@ -1,0 +1,26 @@
+info:
+  name: Discovery Service
+  os: ${os.name}
+  version: ${project.version:0.1.0-SNAPSHOT}
+
+spring:
+  application:
+    name: discovery
+  profiles:
+    active: development
+
+encrypt:
+  failOnError: false
+  keyStore:
+    location: classpath:/server.jks
+    password: jefferlzu
+    alias: serverkey
+    secret: jefferlau
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: cloudapp
+    password: '{cipher}AQBn3lvzsC1XT1rGHQ3g+g+nTDElDm5nUU2AqxwXUjENAXDyOUzXhqk/fbVjTbwZgQGL7OFrit27m14jAb3kYn+1+7YLj9Pnoq/E77RRwz+O2ejQ8YC73l372kmRsd1IiE0v4mxemkUcOeO5WVfFtBsTIWsqsK88UVA0FxfnSZaq0x8EDBYj4aPHPIQWQa/pFFjfKg0LJAJTDbtF816L/vWMJBCARIBtUOpeXRRBBnG0mJg2euzqJ6T/A2wBW/A8Dz7S98cKxz5HGjFg3MbmYgxlxvTCfPYFM68HlSNTNimuYUfUu5mVaH1SgrP2vuvx756DQ4Ne/1ECCHbQgeDPv76CPzWKSjW7+YKL75sQEqdHlmy/JpWluAdTDpw3w73pT8I='
+

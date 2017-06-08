@@ -2,9 +2,15 @@ server:
   port: 9006
 
 logging:
-  level: debug
+  level:
+    ROOT: info
+    me.jefferlau: debug
+  file: logs/${spring.application.name}.log
 
-security:
-  user:
-    name: user
-    password: password
+feign:
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+

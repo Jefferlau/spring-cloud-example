@@ -15,6 +15,11 @@ logging:
     ROOT: INFO
     org.springframework.web: DEBUG
 
+spring:
+  cloud:
+    config:
+      uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@localhost:8888}
+
 eureka:
   client:
     #Region where eureka is deployed -For AWS specify one of the AWS regions, for other datacenters specify a arbitrary string
@@ -35,4 +40,13 @@ eureka:
   instance:
     #Virtual host name by which the clients identifies this service
     virtualHostName: ${spring.application.name}
+    metadataMap:
+      user: cloudapp
+      password: '{cipher}AQBn3lvzsC1XT1rGHQ3g+g+nTDElDm5nUU2AqxwXUjENAXDyOUzXhqk/fbVjTbwZgQGL7OFrit27m14jAb3kYn+1+7YLj9Pnoq/E77RRwz+O2ejQ8YC73l372kmRsd1IiE0v4mxemkUcOeO5WVfFtBsTIWsqsK88UVA0FxfnSZaq0x8EDBYj4aPHPIQWQa/pFFjfKg0LJAJTDbtF816L/vWMJBCARIBtUOpeXRRBBnG0mJg2euzqJ6T/A2wBW/A8Dz7S98cKxz5HGjFg3MbmYgxlxvTCfPYFM68HlSNTNimuYUfUu5mVaH1SgrP2vuvx756DQ4Ne/1ECCHbQgeDPv76CPzWKSjW7+YKL75sQEqdHlmy/JpWluAdTDpw3w73pT8I='
 
+security:
+  basic:
+    enabled: true
+  user:
+    name: cloudapp
+    password: '{cipher}AQBn3lvzsC1XT1rGHQ3g+g+nTDElDm5nUU2AqxwXUjENAXDyOUzXhqk/fbVjTbwZgQGL7OFrit27m14jAb3kYn+1+7YLj9Pnoq/E77RRwz+O2ejQ8YC73l372kmRsd1IiE0v4mxemkUcOeO5WVfFtBsTIWsqsK88UVA0FxfnSZaq0x8EDBYj4aPHPIQWQa/pFFjfKg0LJAJTDbtF816L/vWMJBCARIBtUOpeXRRBBnG0mJg2euzqJ6T/A2wBW/A8Dz7S98cKxz5HGjFg3MbmYgxlxvTCfPYFM68HlSNTNimuYUfUu5mVaH1SgrP2vuvx756DQ4Ne/1ECCHbQgeDPv76CPzWKSjW7+YKL75sQEqdHlmy/JpWluAdTDpw3w73pT8I='

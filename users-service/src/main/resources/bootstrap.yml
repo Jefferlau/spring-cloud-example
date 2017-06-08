@@ -1,3 +1,8 @@
+info:
+  name: User Service
+  os: ${os.name}
+  version: ${project.version:0.1.0-SNAPSHOT}
+
 spring:
   application:
     name: user
@@ -5,7 +10,10 @@ spring:
     active: development
   cloud:
     config:
+      # 快速失败，激活重试
+      fail-fast: true
       discovery:
+        # 使用DiscoveryClient找到配置服务器
         enabled: true
         service-id: configserver
       # label 对应 Git branch
@@ -13,17 +21,30 @@ spring:
       # name 对应文件名
       name: user
       username: cloudapp
-      password: FD3A86C4-3822-4551-9903-3E0B55B1EE65
+      password: '{cipher}AQA/fdRtDccqBAJeU/X6SgwUbyRCHTHyMouJwsTWQ6RY5RARfzvQzwWtZue66RU6IOWpcYtgBt+iJUdBjgfdOVyMEFnr1GEhvK0y9NS1b2M2VDaxiRmqdkbYFQwrNqJIlAGqvZcv/JHqVbER7woa9am8K0RH2O5mekR88KV/+KqV9zOJ3kfRCZkw//mkNMQ85EikojDT9b9yP707UHFdrnAfSXWjlUIpBsrEbgaX98/xMWQJwVWukLuPlf5M47ODDoduxIArUJ4nLUmV2OIpbYxbu6fkp+mczwjC4bnaPynDmxeGJ/qGjT0MXyuTu2GDvTagWLdHG4QKc6vnVDrtdGwU9ucKbym3p6oe8nUq5FVYK+3z9bl0MVmB9Ih4V01UqgA='
 
 eureka:
   client:
     serviceUrl:
-      # defaultZone: http://discovery:8761/eureka/
-      defaultZone: http://${discovery.host:localhost}:8761/eureka/
+      defaultZone: http://${eureka.client.user.name}:${eureka.client.user.password}@${discovery.host:discovery}:8761/eureka/
+    user:
+      name: cloudapp
+      password: cloudapp
   instance:
     preferIpAddress: true
     hostname: user
 
 encrypt:
   failOnError: false
+  keyStore:
+    location: classpath:/server.jks
+    password: jefferlzu
+    alias: serverkey
+    secret: jefferlau
 
+security:
+  basic:
+    enabled: false
+  user:
+    name: cloudapp
+    password: '{cipher}AQBn3lvzsC1XT1rGHQ3g+g+nTDElDm5nUU2AqxwXUjENAXDyOUzXhqk/fbVjTbwZgQGL7OFrit27m14jAb3kYn+1+7YLj9Pnoq/E77RRwz+O2ejQ8YC73l372kmRsd1IiE0v4mxemkUcOeO5WVfFtBsTIWsqsK88UVA0FxfnSZaq0x8EDBYj4aPHPIQWQa/pFFjfKg0LJAJTDbtF816L/vWMJBCARIBtUOpeXRRBBnG0mJg2euzqJ6T/A2wBW/A8Dz7S98cKxz5HGjFg3MbmYgxlxvTCfPYFM68HlSNTNimuYUfUu5mVaH1SgrP2vuvx756DQ4Ne/1ECCHbQgeDPv76CPzWKSjW7+YKL75sQEqdHlmy/JpWluAdTDpw3w73pT8I='

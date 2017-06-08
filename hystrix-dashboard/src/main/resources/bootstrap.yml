@@ -1,6 +1,13 @@
 spring:
   application:
     name: hystrixdashboard
-  cloud:
-    config:
-      uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@localhost:8888}
+  profiles:
+    active: development
+
+encrypt:
+  failOnError: false
+  keyStore:
+    location: classpath:/server.jks
+    password: jefferlzu
+    alias: serverkey
+    secret: jefferlau

@@ -37,7 +37,7 @@ public class UserClientTests {
 
     @Test
     public void testAddByTemplate() {
-       String body = restTemplate.getForEntity("http://discovery/user/add?a=10&b=20", String.class).getBody();
+       String body = restTemplate.getForEntity("http://user/add?a=10&b=20", String.class).getBody();
        System.out.println(body);
        assertThat(body, is(equalTo("30")));
     }

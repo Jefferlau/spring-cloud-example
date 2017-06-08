@@ -1,39 +1,31 @@
 server:
   port: 8888
 
+logging:
+  level:
+    ROOT: info
+#    com.netflix.eureka: debug
+#    org.apache: debug
+
 eureka:
   instance:
-     hostname: configserver
+    hostname: configserver
     # 续约更新时间间隔（默认30秒）生产环境不建议修改
     #lease-renewal-interval-in-seconds: 30
     # 续约到期时间（默认90秒）生产环境不建议修改
     #lease-expiration-duration-in-seconds: 10
+#    metadataMap:
+#      user: cloudapp
+#      password: '{cipher}AQBn3lvzsC1XT1rGHQ3g+g+nTDElDm5nUU2AqxwXUjENAXDyOUzXhqk/fbVjTbwZgQGL7OFrit27m14jAb3kYn+1+7YLj9Pnoq/E77RRwz+O2ejQ8YC73l372kmRsd1IiE0v4mxemkUcOeO5WVfFtBsTIWsqsK88UVA0FxfnSZaq0x8EDBYj4aPHPIQWQa/pFFjfKg0LJAJTDbtF816L/vWMJBCARIBtUOpeXRRBBnG0mJg2euzqJ6T/A2wBW/A8Dz7S98cKxz5HGjFg3MbmYgxlxvTCfPYFM68HlSNTNimuYUfUu5mVaH1SgrP2vuvx756DQ4Ne/1ECCHbQgeDPv76CPzWKSjW7+YKL75sQEqdHlmy/JpWluAdTDpw3w73pT8I='
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      # defaultZone: http://discovery:8761/eureka/
+      # defaultZone: http://${security.user.name}:${security.user.password}@discovery:8761/eureka/
       # 表示没有读到 discovery.host 就用 localhost 这个值
       # java -jar xx.jar --discovery.host=discovery
-      defaultZone: http://${discovery.host:localhost}:8761/eureka/
-    # 开启健康检查（需要spring-boot-starter-actuator依赖）
-    healthcheck:
-      enabled: true
-
-spring:
-  application:
-    name: configserver
-  cloud:
-    config:
-      server:
-        git:
-          # uri: https://github.com/Jefferlau/spring-cloud-example-config.git
-          uri: http://localhost:18080/git/liutiyang/spring-cloud-example-config.git
-          username: cloudapp
-          password: cloudapp
-          search-paths: /
-
-security:
-  user:
-    name: cloudapp
-    password: FD3A86C4-3822-4551-9903-3E0B55B1EE65
+#      defaultZone: http://${eureka.instance.metadataMap.user}:${eureka.instance.metadataMap.password}@${discovery.host:discovery}:8761/eureka/
+      defaultZone: http://${eureka.client.user.name}:${eureka.client.user.password}@${discovery.host:discovery}:8761/eureka/
+    user:
+      name: cloudapp
+      password: '{cipher}AQBn3lvzsC1XT1rGHQ3g+g+nTDElDm5nUU2AqxwXUjENAXDyOUzXhqk/fbVjTbwZgQGL7OFrit27m14jAb3kYn+1+7YLj9Pnoq/E77RRwz+O2ejQ8YC73l372kmRsd1IiE0v4mxemkUcOeO5WVfFtBsTIWsqsK88UVA0FxfnSZaq0x8EDBYj4aPHPIQWQa/pFFjfKg0LJAJTDbtF816L/vWMJBCARIBtUOpeXRRBBnG0mJg2euzqJ6T/A2wBW/A8Dz7S98cKxz5HGjFg3MbmYgxlxvTCfPYFM68HlSNTNimuYUfUu5mVaH1SgrP2vuvx756DQ4Ne/1ECCHbQgeDPv76CPzWKSjW7+YKL75sQEqdHlmy/JpWluAdTDpw3w73pT8I='

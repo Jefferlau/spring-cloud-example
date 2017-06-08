@@ -11,3 +11,16 @@ endpoints:
     enabled: true
   health:
     sensitive: false
+
+logging:
+  level:
+    ROOT: info
+    me.jefferlau: debug
+
+zuul:
+  routes:
+    user:
+      # 请求后方服务时带上 Authorization 头信息
+      # sensitiveHeaders:
+      path: /user/**
+      stripPrefix: true

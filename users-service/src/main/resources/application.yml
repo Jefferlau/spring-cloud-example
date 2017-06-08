@@ -4,3 +4,9 @@ server:
 ribbon:
   eureka:
     enabled: true
+
+logging:
+  level:
+    ROOT: info
+    me.jefferlau: debug
+#    com.netflix.discovery: debug

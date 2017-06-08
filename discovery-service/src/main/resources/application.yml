@@ -1,21 +1,25 @@
-spring:
-  application:
-    name: discovery
-
 server:
   port: 8761
 
+logging:
+  level:
+    ROOT: info
+#    com.netflix.eureka: debug
+#    org.apache: debug
+
 eureka:
   server:
-    # 设为false，关闭自我保护 生产环境不建议修改
+    # 设为 false，关闭自我保护 生产环境不建议修改
     enable-self-preservation: false
     # 清理已关停节点间隔（单位毫秒，默认是 60*1000）生产环境不建议修改
     eviction-interval-timer-in-ms: 4000
+    wait-time-in-ms-when-sync-empty: 0
   instance:
-    hostname: discovery
+    hostname: ${spring.application.name}
   client:
     register-with-eureka: false
+    # 是否从 eureka 服务器获取注册信息
     fetch-registry: false
     service-url:
-      default-zone: http://discovery:${server.port}/eureka/
-
+      # zone 名称各个应用要统一否则可能会出现错误 c.n.e.cluster.ReplicationTaskProcessor   : Batch update failure with HTTP status code 401;
+      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname:discovery}:${server.port}/eureka/
