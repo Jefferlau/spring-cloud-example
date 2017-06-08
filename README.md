@@ -133,8 +133,8 @@ spring decrypt AQBn3lvzsC1XT1rGHQ3g+g+nTDElDm5nUU2AqxwXUjENAXDyOUzXhqk/fbVjTbwZg
 
 1. Eureka client 和 config 发现配置要放在 bootstrap.yml 文件里
 1. Eureka client 密码不能加密
-  - com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver
-  - 在调用时 Spring 的解密功能尚未实例化
+    - com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver
+    - 在调用时 Spring 的解密功能尚未实例化
 1. Config server uri 默认值是 ``http://localhost:8888``
-  - org.springframework.cloud.config.client.ConfigClientProperties
-  - org.springframework.cloud.config.client.ConfigServicePropertySourceLocator
+    - org.springframework.cloud.config.client.ConfigClientProperties
+    - org.springframework.cloud.config.client.ConfigServicePropertySourceLocator
